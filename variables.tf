@@ -9,3 +9,12 @@ variable "app-name" {
   description = "The name of the app."
   default     = "sonarqube"
 }
+
+variable "postgres-p" {
+  type        = string
+  default     = "c29uYXJQYXNz"
+}
+variable "postgresql-p" {
+  type        = string
+  default     = "MnlwaHJ6VDltVQ=="
+}

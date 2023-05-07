@@ -49,85 +49,89 @@
 # #       {}
 # #   restartPolicy: Never
 
-# resource "kubernetes_manifest" "pod_release_name_ui_test" {
-#   manifest = {
-#     "apiVersion" = "v1"
-#     "kind" = "Pod"
-#     "metadata" = {
-#       "annotations" = {
-#         "helm.sh/hook" = "test-success"
-#       }
-#       "labels" = {
-#         "app" = "sonarqube"
-#         "chart" = "sonarqube-8.0.1_546"
-#         "heritage" = "Helm"
-#         "release" = "release-name"
-#       }
-#       "name" = "release-name-ui-test"
-#     }
-#     "spec" = {
-#       "containers" = [
-#         {
-#           "command" = [
-#             "/tools/bats/bin/bats",
-#             "--tap",
-#             "/tests/run.sh",
-#           ]
-#           "image" = "bitnami/minideb-extras"
-#           "imagePullPolicy" = "IfNotPresent"
-#           "name" = "release-name-ui-test"
-#           "resources" = {}
-#           "volumeMounts" = [
-#             {
-#               "mountPath" = "/tests"
-#               "name" = "tests"
-#               "readOnly" = true
-#             },
-#             {
-#               "mountPath" = "/tools"
-#               "name" = "tools"
-#             },
-#           ]
-#         },
-#       ]
-#       "initContainers" = [
-#         {
-#           "args" = [
-#             <<-EOT
-#             set -ex
-#             cp -R /opt/bats /tools/bats/
-#             EOT
-#             ,
-#           ]
-#           "command" = [
-#             "bash",
-#             "-c",
-#           ]
-#           "image" = "bats/bats:1.2.1"
-#           "imagePullPolicy" = "IfNotPresent"
-#           "name" = "bats"
-#           "resources" = {}
-#           "volumeMounts" = [
-#             {
-#               "mountPath" = "/tools"
-#               "name" = "tools"
-#             },
-#           ]
-#         },
-#       ]
-#       "restartPolicy" = "Never"
-#       "volumes" = [
-#         {
-#           "configMap" = {
-#             "name" = "release-name-sonarqube-tests"
-#           }
-#           "name" = "tests"
-#         },
-#         {
-#           "emptyDir" = {}
-#           "name" = "tools"
-#         },
-#       ]
-#     }
-#   }
-# }
+resource "kubernetes_manifest" "pod_release_name_ui_test" {
+  manifest = {
+    "apiVersion" = "v1"
+    "kind" = "Pod"
+    "metadata" = {
+      "annotations" = {
+        "helm.sh/hook" = "test-success"
+      }
+      "labels" = {
+        "app" = "sonarqube"
+        "chart" = "sonarqube-8.0.1_546"
+        "heritage" = "Helm"
+        "release" = "release-name"
+      }
+      "name" = "release-name-ui-test"
+      "namespace" = "sonarqube"
+    }
+    "spec" = {
+      "containers" = [
+        {
+          "command" = [
+            "/tools/bats/bin/bats",
+            "--tap",
+            "/tests/run.sh",
+          ]
+          "image" = "bitnami/minideb-extras"
+          "imagePullPolicy" = "IfNotPresent"
+          "name" = "release-name-ui-test"
+          "resources" = {}
+          "volumeMounts" = [
+            {
+              "mountPath" = "/tests"
+              "name" = "tests"
+              "readOnly" = true
+            },
+            {
+              "mountPath" = "/tools"
+              "name" = "tools"
+            },
+          ]
+        },
+      ]
+      "initContainers" = [
+        {
+          "args" = [
+            <<-EOT
+            set -ex
+            cp -R /opt/bats /tools/bats/
+            EOT
+            ,
+          ]
+          "command" = [
+            "bash",
+            "-c",
+          ]
+          "image" = "bats/bats:1.2.1"
+          "imagePullPolicy" = "IfNotPresent"
+          "name" = "bats"
+          "resources" = {}
+          "volumeMounts" = [
+            {
+              "mountPath" = "/tools"
+              "name" = "tools"
+            },
+          ]
+        },
+      ]
+      "restartPolicy" = "Never"
+      "volumes" = [
+        {
+          "configMap" = {
+            "name" = "release-name-sonarqube-tests"
+          }
+          "name" = "tests"
+        },
+        # {
+        #   "emptyDir" = {}
+        #   "name" = "tools"
+        # },
+      ]
+    }
+  }
+  depends_on = [ 
+    kubernetes_manifest.configmap_sonarqube_sonarqube_sonarqube_tests
+     ]
+}

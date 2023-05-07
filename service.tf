@@ -17,10 +17,6 @@ resource "kubernetes_manifest" "service_sonarqube_sonarqube_postgresql" {
       "namespace" = "sonarqube"
     }
     "spec" = {
-      "clusterIP" = "10.96.60.29"
-      "clusterIPs" = [
-        "10.96.60.29",
-      ]
       "internalTrafficPolicy" = "Cluster"
       "ipFamilies" = [
         "IPv4",
@@ -119,10 +115,6 @@ resource "kubernetes_manifest" "service_sonarqube_sonarqube_sonarqube" {
       "namespace" = "sonarqube"
     }
     "spec" = {
-      "clusterIP" = "10.96.22.201"
-      "clusterIPs" = [
-        "10.96.22.201",
-      ]
       "internalTrafficPolicy" = "Cluster"
       "ipFamilies" = [
         "IPv4",

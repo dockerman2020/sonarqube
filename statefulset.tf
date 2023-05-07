@@ -617,32 +617,42 @@ resource "kubernetes_manifest" "statefulset_sonarqube_sonarqube_postgresql" {
               }
               "name" = "dshm"
             },
+            {
+              "name" = "data"
+              "persistentVolumeClaim" = {
+                "claimName" = "data-sonarqube-postgresql-0"
+              }
+            },
           ]
         }
       }
       "updateStrategy" = {
         "type" = "RollingUpdate"
       }
-      "volumeClaimTemplates" = [
-        {
-          "apiVersion" = "v1"
-          "kind"       = "PersistentVolumeClaim"
-          "metadata" = {
-            "name" = "data"
-          }
-          "spec" = {
-            "accessModes" = [
-              "ReadWriteOnce",
-            ]
-            "resources" = {
-              "requests" = {
-                "storage" = "20Gi"
-              }
-            }
-            "volumeMode" = "Filesystem"
-          }
-        },
-      ]
+      # "volumeClaimTemplates" = [
+      #   {
+      #     "apiVersion" = "v1"
+      #     "kind"       = "PersistentVolumeClaim"
+      #     "metadata" = {
+      #       "name" = "data"
+      #     }
+      #     "spec" = {
+      #       "accessModes" = [
+      #         "ReadWriteOnce",
+      #       ]
+      #       "storageClassName" = "local-storage"
+      #       "resources" = {
+      #         "requests" = {
+      #           "storage" = "20Gi"
+      #         }
+      #       }
+      #       "volumeMode" = "Filesystem"
+      #     }
+      #   },
+      # ]
     }
   }
+  depends_on = [ 
+    kubernetes_manifest.persistentvolumeclaim_sonarqube_data_sonarqube_postgresql_0
+   ]
 }
