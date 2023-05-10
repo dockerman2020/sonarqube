@@ -4,8 +4,8 @@ resource "kubernetes_manifest" "statefulset_sonarqube_sonarqube_sonarqube" {
     "kind"       = "StatefulSet"
     "metadata" = {
       "annotations" = {
-        "meta.helm.sh/release-name"      = "sonarqube"
-        "meta.helm.sh/release-namespace" = "sonarqube"
+        "meta.kind.tf/release-name"      = data.kubernetes_resource.sonarqube_ns.metadata[0].name
+        "meta.kind.tf/release-namespace" = data.kubernetes_resource.sonarqube_ns.metadata[0].namespace
       }
       "labels" = {
         "app"                          = "sonarqube"
@@ -20,7 +20,7 @@ resource "kubernetes_manifest" "statefulset_sonarqube_sonarqube_sonarqube" {
         "release"                      = "sonarqube"
       }
       "name"      = "sonarqube-sonarqube"
-      "namespace" = "sonarqube"
+      "namespace" = data.kubernetes_resource.sonarqube_ns.metadata[0].namespace
     }
     "spec" = {
       "persistentVolumeClaimRetentionPolicy" = {
@@ -385,6 +385,9 @@ resource "kubernetes_manifest" "statefulset_sonarqube_sonarqube_sonarqube" {
       }
     }
   }
+  depends_on = [ 
+    data.kubernetes_resource.sonarqube_ns
+   ]
 }
 
 resource "kubernetes_manifest" "statefulset_sonarqube_sonarqube_postgresql" {
@@ -393,8 +396,8 @@ resource "kubernetes_manifest" "statefulset_sonarqube_sonarqube_postgresql" {
     "kind"       = "StatefulSet"
     "metadata" = {
       "annotations" = {
-        "meta.helm.sh/release-name"      = "sonarqube"
-        "meta.helm.sh/release-namespace" = "sonarqube"
+        "meta.kind.tf/release-name"      = data.kubernetes_resource.sonarqube_ns.metadata[0].name
+        "meta.kind.tf/release-namespace" = data.kubernetes_resource.sonarqube_ns.metadata[0].namespace
       }
       "labels" = {
         "app.kubernetes.io/component" = "primary"
@@ -402,7 +405,7 @@ resource "kubernetes_manifest" "statefulset_sonarqube_sonarqube_postgresql" {
         "app.kubernetes.io/name"      = "postgresql"
       }
       "name"      = "sonarqube-postgresql"
-      "namespace" = "sonarqube"
+      "namespace" = data.kubernetes_resource.sonarqube_ns.metadata[0].namespace
     }
     "spec" = {
       "persistentVolumeClaimRetentionPolicy" = {

@@ -3,7 +3,7 @@
 # # metadata:
 # #   name: "release-name-ui-test"
 # #   annotations:
-# #     "helm.sh/hook": test-success
+# #     "meta.tf/hook": test-success
 # #   labels:
 # #     app: sonarqube
 # #     chart: sonarqube-8.0.1_546
@@ -55,7 +55,7 @@ resource "kubernetes_manifest" "pod_release_name_ui_test" {
     "kind" = "Pod"
     "metadata" = {
       "annotations" = {
-        "helm.sh/hook" = "test-success"
+        "kind.tf/hook" = "test-success"
       }
       "labels" = {
         "app" = "sonarqube"

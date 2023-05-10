@@ -4,8 +4,8 @@ resource "kubernetes_manifest" "service_sonarqube_sonarqube_postgresql" {
     "kind"       = "Service"
     "metadata" = {
       "annotations" = {
-        "meta.helm.sh/release-name"      = "sonarqube"
-        "meta.helm.sh/release-namespace" = "sonarqube"
+        "meta.kind.tf/release-name"      = "sonarqube"
+        "meta.kind.tf/release-namespace" = "sonarqube"
       }
       "labels" = {
         "app.kubernetes.io/instance"   = "sonarqube"
@@ -40,7 +40,7 @@ resource "kubernetes_manifest" "service_sonarqube_sonarqube_postgresql" {
     }
   }
   depends_on = [ 
-    kubernetes_namespace.sonarqube_ns
+    data.kubernetes_resource.sonarqube_ns
      ]
 }
 
@@ -50,8 +50,8 @@ resource "kubernetes_manifest" "service_sonarqube_sonarqube_postgresql_headless"
     "kind"       = "Service"
     "metadata" = {
       "annotations" = {
-        "meta.helm.sh/release-name"      = "sonarqube"
-        "meta.helm.sh/release-namespace" = "sonarqube"
+        "meta.kind.tf/release-name"      = "sonarqube"
+        "meta.kind.tf/release-namespace" = "sonarqube"
       }
       "labels" = {
         "app.kubernetes.io/instance"                             = "sonarqube"
@@ -91,7 +91,7 @@ resource "kubernetes_manifest" "service_sonarqube_sonarqube_postgresql_headless"
     }
   }
   depends_on = [ 
-    kubernetes_namespace.sonarqube_ns
+    data.kubernetes_resource.sonarqube_ns
      ]
 }
 
@@ -101,8 +101,8 @@ resource "kubernetes_manifest" "service_sonarqube_sonarqube_sonarqube" {
     "kind"       = "Service"
     "metadata" = {
       "annotations" = {
-        "meta.helm.sh/release-name"      = "sonarqube"
-        "meta.helm.sh/release-namespace" = "sonarqube"
+        "meta.kind.tf/release-name"      = "sonarqube"
+        "meta.kind.tf/release-namespace" = "sonarqube"
       }
       "labels" = {
         "app"                          = "sonarqube"
@@ -137,6 +137,6 @@ resource "kubernetes_manifest" "service_sonarqube_sonarqube_sonarqube" {
     }
   }
   depends_on = [ 
-    kubernetes_namespace.sonarqube_ns
+   data.kubernetes_resource.sonarqube_ns
      ]
 }

@@ -5,8 +5,8 @@ resource "kubernetes_manifest" "ingress_sonarqube_sonarqube_sonarqube" {
     "metadata" = {
       "annotations" = {
         "ingressClassName"                            = "nginx"
-        "meta.helm.sh/release-name"                   = "sonarqube"
-        "meta.helm.sh/release-namespace"              = "sonarqube"
+        "meta.kind.tf/release-name"                   = "sonarqube"
+        "meta.kind.tf/release-namespace"              = "sonarqube"
         "nginx.ingress.kubernetes.io/proxy-body-size" = "64m"
       }
       "labels" = {
@@ -44,6 +44,6 @@ resource "kubernetes_manifest" "ingress_sonarqube_sonarqube_sonarqube" {
     }
   }
   depends_on = [ 
-    kubernetes_namespace.sonarqube_ns
+    data.kubernetes_resource.sonarqube_ns
      ]
 }

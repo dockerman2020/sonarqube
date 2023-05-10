@@ -7,8 +7,8 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_config" 
     "kind" = "ConfigMap"
     "metadata" = {
       "annotations" = {
-        "meta.helm.sh/release-name"      = "sonarqube"
-        "meta.helm.sh/release-namespace" = "sonarqube"
+        "meta.kind.tf/release-name"      = "sonarqube"
+        "meta.kind.tf/release-namespace" = "${data.kubernetes_resource.sonarqube_ns.metadata[0].namespace}"
       }
       "labels" = {
         "app"                          = "sonarqube"
@@ -18,11 +18,11 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_config" 
         "release"                      = "sonarqube"
       }
       "name"      = "sonarqube-sonarqube-config"
-      "namespace" = "sonarqube"
+      "namespace" = data.kubernetes_resource.sonarqube_ns.metadata[0].namespace
     }
   }
   depends_on = [ 
-    kubernetes_namespace.sonarqube_ns
+    data.kubernetes_resource.sonarqube_ns
      ]
 }
 
@@ -35,8 +35,8 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_init_fs"
     "kind" = "ConfigMap"
     "metadata" = {
       "annotations" = {
-        "meta.helm.sh/release-name"      = "sonarqube"
-        "meta.helm.sh/release-namespace" = "sonarqube"
+        "meta.kind.tf/release-name"      = "sonarqube"
+        "meta.kind.tf/release-namespace" = "${data.kubernetes_resource.sonarqube_ns.metadata[0].namespace}"
       }
       "labels" = {
         "app"                          = "sonarqube"
@@ -46,11 +46,11 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_init_fs"
         "release"                      = "sonarqube"
       }
       "name"      = "sonarqube-sonarqube-init-fs"
-      "namespace" = "sonarqube"
+      "namespace" = data.kubernetes_resource.sonarqube_ns.metadata[0].namespace
     }
   }
   depends_on = [ 
-    kubernetes_namespace.sonarqube_ns
+    data.kubernetes_resource.sonarqube_ns
      ]
 }
 
@@ -82,8 +82,8 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_init_sys
     "kind" = "ConfigMap"
     "metadata" = {
       "annotations" = {
-        "meta.helm.sh/release-name"      = "sonarqube"
-        "meta.helm.sh/release-namespace" = "sonarqube"
+        "meta.kind.tf/release-name"      = "sonarqube"
+        "meta.kind.tf/release-namespace" = "${data.kubernetes_resource.sonarqube_ns.metadata[0].namespace}"
       }
       "labels" = {
         "app"                          = "sonarqube"
@@ -93,11 +93,11 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_init_sys
         "release"                      = "sonarqube"
       }
       "name"      = "sonarqube-sonarqube-init-sysctl"
-      "namespace" = "sonarqube"
+      "namespace" = data.kubernetes_resource.sonarqube_ns.metadata[0].namespace
     }
   }
   depends_on = [ 
-    kubernetes_namespace.sonarqube_ns
+    data.kubernetes_resource.sonarqube_ns
      ]
 }
 
@@ -110,8 +110,8 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_install_
     "kind" = "ConfigMap"
     "metadata" = {
       "annotations" = {
-        "meta.helm.sh/release-name"      = "sonarqube"
-        "meta.helm.sh/release-namespace" = "sonarqube"
+        "meta.kind.tf/release-name"      = "sonarqube"
+        "meta.kind.tf/release-namespace" = "${data.kubernetes_resource.sonarqube_ns.metadata[0].namespace}"
       }
       "labels" = {
         "app"                          = "sonarqube"
@@ -121,11 +121,11 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_install_
         "release"                      = "sonarqube"
       }
       "name"      = "sonarqube-sonarqube-install-plugins"
-      "namespace" = "sonarqube"
+      "namespace" = data.kubernetes_resource.sonarqube_ns.metadata[0].namespace
     }
   }
   depends_on = [ 
-    kubernetes_namespace.sonarqube_ns
+    data.kubernetes_resource.sonarqube_ns
      ]
 }
 
@@ -139,8 +139,8 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_jdbc_con
     "kind" = "ConfigMap"
     "metadata" = {
       "annotations" = {
-        "meta.helm.sh/release-name"      = "sonarqube"
-        "meta.helm.sh/release-namespace" = "sonarqube"
+        "meta.kind.tf/release-name"      = "sonarqube"
+        "meta.kind.tf/release-namespace" = "${data.kubernetes_resource.sonarqube_ns.metadata[0].namespace}"
       }
       "labels" = {
         "app"                          = "sonarqube"
@@ -150,11 +150,11 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_jdbc_con
         "release"                      = "sonarqube"
       }
       "name"      = "sonarqube-sonarqube-jdbc-config"
-      "namespace" = "sonarqube"
+      "namespace" = data.kubernetes_resource.sonarqube_ns.metadata[0].namespace
     }
   }
   depends_on = [ 
-    kubernetes_namespace.sonarqube_ns
+    data.kubernetes_resource.sonarqube_ns
      ]
 }
 
@@ -170,8 +170,8 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_promethe
     "kind" = "ConfigMap"
     "metadata" = {
       "annotations" = {
-        "meta.helm.sh/release-name"      = "sonarqube"
-        "meta.helm.sh/release-namespace" = "sonarqube"
+        "meta.kind.tf/release-name"      = "sonarqube"
+        "meta.kind.tf/release-namespace" = "${data.kubernetes_resource.sonarqube_ns.metadata[0].namespace}"
       }
       "labels" = {
         "app"                          = "sonarqube"
@@ -181,11 +181,11 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_promethe
         "release"                      = "sonarqube"
       }
       "name"      = "sonarqube-sonarqube-prometheus-ce-config"
-      "namespace" = "sonarqube"
+      "namespace" = data.kubernetes_resource.sonarqube_ns.metadata[0].namespace
     }
   }
   depends_on = [ 
-    kubernetes_namespace.sonarqube_ns
+    data.kubernetes_resource.sonarqube_ns
      ]
 }
 
@@ -201,8 +201,8 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_promethe
     "kind" = "ConfigMap"
     "metadata" = {
       "annotations" = {
-        "meta.helm.sh/release-name"      = "sonarqube"
-        "meta.helm.sh/release-namespace" = "sonarqube"
+        "meta.kind.tf/release-name"      = "sonarqube"
+        "meta.kind.tf/release-namespace" = "${data.kubernetes_resource.sonarqube_ns.metadata[0].namespace}"
       }
       "labels" = {
         "app"                          = "sonarqube"
@@ -212,11 +212,11 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_promethe
         "release"                      = "sonarqube"
       }
       "name"      = "sonarqube-sonarqube-prometheus-config"
-      "namespace" = "sonarqube"
+      "namespace" = data.kubernetes_resource.sonarqube_ns.metadata[0].namespace
     }
   }
   depends_on = [ 
-    kubernetes_namespace.sonarqube_ns
+    data.kubernetes_resource.sonarqube_ns
      ]
 }
 
@@ -233,8 +233,8 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_tests" {
     "kind" = "ConfigMap"
     "metadata" = {
       "annotations" = {
-        "meta.helm.sh/release-name"      = "sonarqube"
-        "meta.helm.sh/release-namespace" = "sonarqube"
+        "meta.kind.tf/release-name"      = "sonarqube"
+        "meta.kind.tf/release-namespace" = "${data.kubernetes_resource.sonarqube_ns.metadata[0].namespace}"
       }
       "labels" = {
         "app"                          = "sonarqube"
@@ -244,10 +244,10 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_tests" {
         "release"                      = "sonarqube"
       }
       "name"      = "sonarqube-sonarqube-tests"
-      "namespace" = "sonarqube"
+      "namespace" = data.kubernetes_resource.sonarqube_ns.metadata[0].namespace
     }
   }
   depends_on = [ 
-    kubernetes_namespace.sonarqube_ns
+    data.kubernetes_resource.sonarqube_ns
      ]
 }

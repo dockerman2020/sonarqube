@@ -3,14 +3,11 @@ provider "kubernetes" {
   config_context = "kind-terraform"
 }
 
-resource "kubernetes_namespace" "sonarqube_ns" {
+data "kubernetes_resource" "sonarqube_ns" {
+  api_version = "v1"
+  kind        = "Namespace"
   metadata {
-    annotations = {
-      name = "sonarqube"
-    }
-    labels = {
-      "kubernetes.io/metadata.name" = "sonarqube"
-    }
-    name = "sonarqube"
+    name      = "sonarqube"
+    namespace = "sonarqube"
   }
 }
