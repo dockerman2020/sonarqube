@@ -11,7 +11,7 @@ resource "kubernetes_manifest" "ingress_sonarqube_sonarqube_sonarqube" {
       }
       "labels" = {
         "app"                          = "sonarqube"
-        "app.kubernetes.io/managed-by" = "Helm"
+        "app.kubernetes.io/managed-by" = "Terraform"
         "chart"                        = "sonarqube-8.0.1_546"
         "heritage"                     = "Helm"
         "release"                      = "sonarqube"

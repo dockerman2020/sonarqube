@@ -13,9 +13,9 @@ resource "kubernetes_manifest" "secret_sonarqube_sonarqube_postgresql" {
       }
       "labels" = {
         "app.kubernetes.io/instance"   = "sonarqube"
-        "app.kubernetes.io/managed-by" = "Helm"
+        "app.kubernetes.io/managed-by" = "Terraform"
         "app.kubernetes.io/name"       = "postgresql"
-        "helm.sh/chart"                = "postgresql-10.15.0"
+        "kind.tf/chart"                = "postgresql-10.15.0"
       }
       "name"      = "sonarqube-postgresql"
       "namespace" = "sonarqube"
@@ -41,7 +41,7 @@ resource "kubernetes_manifest" "secret_sonarqube_sonarqube_sonarqube_monitoring_
       }
       "labels" = {
         "app"                          = "sonarqube"
-        "app.kubernetes.io/managed-by" = "Helm"
+        "app.kubernetes.io/managed-by" = "Terraform"
         "chart"                        = "sonarqube-8.0.1_546"
         "heritage"                     = "Helm"
         "release"                      = "sonarqube"

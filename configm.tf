@@ -12,7 +12,7 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_config" 
       }
       "labels" = {
         "app"                          = "sonarqube"
-        "app.kubernetes.io/managed-by" = "Helm"
+        "app.kubernetes.io/managed-by" = "Terraform"
         "chart"                        = "sonarqube-8.0.1_546"
         "heritage"                     = "Helm"
         "release"                      = "sonarqube"
@@ -40,7 +40,7 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_init_fs"
       }
       "labels" = {
         "app"                          = "sonarqube"
-        "app.kubernetes.io/managed-by" = "Helm"
+        "app.kubernetes.io/managed-by" = "Terraform"
         "chart"                        = "sonarqube-8.0.1_546"
         "heritage"                     = "Helm"
         "release"                      = "sonarqube"
@@ -87,7 +87,7 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_init_sys
       }
       "labels" = {
         "app"                          = "sonarqube"
-        "app.kubernetes.io/managed-by" = "Helm"
+        "app.kubernetes.io/managed-by" = "Terraform"
         "chart"                        = "sonarqube-8.0.1_546"
         "heritage"                     = "Helm"
         "release"                      = "sonarqube"
@@ -115,7 +115,7 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_install_
       }
       "labels" = {
         "app"                          = "sonarqube"
-        "app.kubernetes.io/managed-by" = "Helm"
+        "app.kubernetes.io/managed-by" = "Terraform"
         "chart"                        = "sonarqube-8.0.1_546"
         "heritage"                     = "Helm"
         "release"                      = "sonarqube"
@@ -144,7 +144,7 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_jdbc_con
       }
       "labels" = {
         "app"                          = "sonarqube"
-        "app.kubernetes.io/managed-by" = "Helm"
+        "app.kubernetes.io/managed-by" = "Terraform"
         "chart"                        = "sonarqube-8.0.1_546"
         "heritage"                     = "Helm"
         "release"                      = "sonarqube"
@@ -175,7 +175,7 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_promethe
       }
       "labels" = {
         "app"                          = "sonarqube"
-        "app.kubernetes.io/managed-by" = "Helm"
+        "app.kubernetes.io/managed-by" = "Terraform"
         "chart"                        = "sonarqube-8.0.1_546"
         "heritage"                     = "Helm"
         "release"                      = "sonarqube"
@@ -206,7 +206,7 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_promethe
       }
       "labels" = {
         "app"                          = "sonarqube"
-        "app.kubernetes.io/managed-by" = "Helm"
+        "app.kubernetes.io/managed-by" = "Terraform"
         "chart"                        = "sonarqube-8.0.1_546"
         "heritage"                     = "Helm"
         "release"                      = "sonarqube"
@@ -238,7 +238,7 @@ resource "kubernetes_manifest" "configmap_sonarqube_sonarqube_sonarqube_tests" {
       }
       "labels" = {
         "app"                          = "sonarqube"
-        "app.kubernetes.io/managed-by" = "Helm"
+        "app.kubernetes.io/managed-by" = "Terraform"
         "chart"                        = "sonarqube-8.0.1_546"
         "heritage"                     = "Helm"
         "release"                      = "sonarqube"
