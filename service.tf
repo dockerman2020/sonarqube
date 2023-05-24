@@ -141,44 +141,44 @@ resource "kubernetes_manifest" "service_sonarqube_sonarqube_sonarqube" {
      ]
 }
 
-resource "kubernetes_manifest" "service_sonarqube_nodeport_server" {
-  manifest = {
-    "apiVersion" = "v1"
-    "kind" = "Service"
-    "metadata" = {
-      "annotations" = {
-        "meta.kind.tf/release-name"      = "sonarqube"
-        "meta.kind.tf/release-namespace" = "sonarqube"
-      }
-      "labels" = {
-        "app" = "sonarqube"
-        "release" = "sonarqube"
-      }
-      "name" = "sonarqube-server-nodeport"
-      "namespace" = "sonarqube"
-    }
-    "spec" = {
-      "externalTrafficPolicy" = "Cluster"
-      "internalTrafficPolicy" = "Cluster"
-      "ipFamilies" = [
-        "IPv4",
-      ]
-      "ipFamilyPolicy" = "SingleStack"
-      "ports" = [
-        {
-          "name"       = "http"
-          "port"       = 9000
-          "nodePort" = 31923
-          "protocol"   = "TCP"
-          "targetPort" = "http"
-        },
-      ]
-      "selector" = {
-        "app"     = "sonarqube"
-        "release" = "sonarqube"
-      }
-      "sessionAffinity" = "None"
-      "type" = "NodePort"
-    }
-  }
-}
+# resource "kubernetes_manifest" "service_sonarqube_nodeport_server" {
+#   manifest = {
+#     "apiVersion" = "v1"
+#     "kind" = "Service"
+#     "metadata" = {
+#       "annotations" = {
+#         "meta.kind.tf/release-name"      = "sonarqube"
+#         "meta.kind.tf/release-namespace" = "sonarqube"
+#       }
+#       "labels" = {
+#         "app" = "sonarqube"
+#         "release" = "sonarqube"
+#       }
+#       "name" = "sonarqube-server-nodeport"
+#       "namespace" = "sonarqube"
+#     }
+#     "spec" = {
+#       "externalTrafficPolicy" = "Cluster"
+#       "internalTrafficPolicy" = "Cluster"
+#       "ipFamilies" = [
+#         "IPv4",
+#       ]
+#       "ipFamilyPolicy" = "SingleStack"
+#       "ports" = [
+#         {
+#           "name"       = "http"
+#           "port"       = 9090
+#           "nodePort" = 31923
+#           "protocol"   = "TCP"
+#           "targetPort" = "http"
+#         },
+#       ]
+#       "selector" = {
+#         "app"     = "sonarqube"
+#         "release" = "sonarqube"
+#       }
+#       "sessionAffinity" = "None"
+#       "type" = "NodePort"
+#     }
+#   }
+# }
